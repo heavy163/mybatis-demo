@@ -1,4 +1,8 @@
-
+buildscript {
+	ext{
+		mysqlVersion = '8.0.15'
+	}
+}
 
 plugins {
 	id 'org.springframework.boot' version '2.3.2.RELEASE'
@@ -22,7 +26,7 @@ dependencies {
 	implementation 'com.gitee.sunchenbin.mybatis.actable:mybatis-enhance-actable:1.2.1.RELEASE'
 	implementation 'org.mybatis.generator:mybatis-generator:1.4.0'
 	implementation 'org.mybatis.generator:mybatis-generator-core:1.4.0'
-	runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'mysql:mysql-connector-java:8.0.15'
 	implementation 'com.alibaba:druid-spring-boot-starter:1.1.17'
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
@@ -33,4 +37,49 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+mbg {
+	// 是否覆盖旧文件，默认为true
+	overwrite = true
+
+	// 是否打印执行过程日志，默认为false
+	verbose = false
+
+	// 是否打印调试日志，默认为false
+	debug = false
+
+	// 数据库连接信息，在xml中的引用方式：${jdbc.属性名}
+	// 若该信息已在xml文件中写死，则不必在此处配置
+	jdbc {
+		// 驱动类，默认为'com.mysql.jdbc.Driver'
+		driver = 'com.mysql.jdbc.Driver'
+		// 默认为空
+		url = 'jdbc:mysql://127.0.0.1:3306/mybatis?useSSL=false'
+		// 默认为root
+		username = 'root'
+		// 默认为空
+		password = 'root'
+	}
+
+	// 配置文件路径（默认包含generatorConfig.xml）及上下文，支持多配置文件
+	// key：配置文件路径（在src/main/resources下的相对路径）
+	// value：上下文
+	config['gradle-generator.xml'] = {
+		// 待生成的文件路径信息，在xml中的引用方式：${file.属性名}
+		// 以下皆为默认配置，不建议自定义配置，推荐默认配置
+		// 若在此处配该信息已在xml文件中写死，则不必设置，使用空闭包即可
+
+		// 实体类文件
+		modelDir = 'gensrc/main/java'
+		modelPackage = "com.example.mybatisdemo.gradle.model"
+
+		// *Mapper.xml文件
+		xmlDir = 'src/main/resources'
+		xmlPackage = 'gradle.mapper'
+
+		// *Mapper.java文件
+		clientDir = 'src/main/java'
+		clientPackage = "com.example.mybatisdemo.gradle.mapper"
+	}
 }
