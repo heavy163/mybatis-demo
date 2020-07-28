@@ -1,23 +1,27 @@
 package com.example.mybatisdemo.model;
 
 import com.gitee.sunchenbin.mybatis.actable.annotation.Column;
-import com.gitee.sunchenbin.mybatis.actable.annotation.Table;
 import com.gitee.sunchenbin.mybatis.actable.command.BaseModel;
 import com.gitee.sunchenbin.mybatis.actable.constants.MySqlTypeConstant;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
 
-@Table(name = "test")
+@ApiModel
 public class Test extends BaseModel {
 
     private static final long serialVersionUID = 5199200306752426433L;
 
     @Column(name = "id",type = MySqlTypeConstant.INT,length = 11,isKey = true,isAutoIncrement = true)
+    @ApiModelProperty(name = "id", value = "0", required = false)
     private Integer id;
 
+    @ApiModelProperty(value = "姓名")
     @Column(name = "name",type = MySqlTypeConstant.VARCHAR,length = 111)
     private String  name;
 
+    @ApiModelProperty(value = "描述")
     @Column(name = "description",type = MySqlTypeConstant.TEXT)
     private String  description;
 

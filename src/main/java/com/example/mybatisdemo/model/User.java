@@ -2,7 +2,6 @@ package com.example.mybatisdemo.model;
 
 import com.gitee.sunchenbin.mybatis.actable.annotation.*;
 
-@Table(name = "tab_user")
 public class User {
 
     public User(String userName, String password, UserSexEnum sex){

@@ -17,11 +17,11 @@
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <!--生成mapper.xml时覆盖原文件-->
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
-        <commentGenerator >
+        <commentGenerator type="com.example.mybatisdemo.CommentGenerator">
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-            <property name="suppressAllComments" value="false"/>
-            <property name="suppressDate" value="false"/>
-            <property name="addRemarkComments" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
         </commentGenerator>
 
         <jdbcConnection driverClass="${spring.datasource.driverClassName}"

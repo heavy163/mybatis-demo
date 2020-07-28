@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mybatisdemo.generated.dao.TabUserMapper">
-  <resultMap id="BaseResultMap" type="com.example.mybatisdemo.generated.model.TabUser">
+<mapper namespace="com.example.mybatisdemo.generated.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.example.mybatisdemo.generated.model.User">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -68,13 +68,13 @@
   <sql id="Base_Column_List">
     id, user_name, password, nick_name
   </sql>
-  <select id="selectByExample" parameterType="com.example.mybatisdemo.generated.model.TabUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.mybatisdemo.generated.model.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tab_user
+    from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,33 +85,33 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from tab_user
+    from user
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from tab_user
+    delete from user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.mybatisdemo.generated.model.TabUserExample">
-    delete from tab_user
+  <delete id="deleteByExample" parameterType="com.example.mybatisdemo.generated.model.UserExample">
+    delete from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.mybatisdemo.generated.model.TabUser">
+  <insert id="insert" parameterType="com.example.mybatisdemo.generated.model.User">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into tab_user (user_name, password, nick_name
+    insert into user (user_name, password, nick_name
       )
     values (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.mybatisdemo.generated.model.TabUser">
+  <insert id="insertSelective" parameterType="com.example.mybatisdemo.generated.model.User">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into tab_user
+    insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userName != null">
         user_name,
@@ -135,14 +135,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.mybatisdemo.generated.model.TabUserExample" resultType="java.lang.Long">
-    select count(*) from tab_user
+  <select id="countByExample" parameterType="com.example.mybatisdemo.generated.model.UserExample" resultType="java.lang.Long">
+    select count(*) from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update tab_user
+    update user
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -162,7 +162,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update tab_user
+    update user
     set id = #{record.id,jdbcType=BIGINT},
       user_name = #{record.userName,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
@@ -171,8 +171,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.mybatisdemo.generated.model.TabUser">
-    update tab_user
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mybatisdemo.generated.model.User">
+    update user
     <set>
       <if test="userName != null">
         user_name = #{userName,jdbcType=VARCHAR},
@@ -186,8 +186,8 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.generated.model.TabUser">
-    update tab_user
+  <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.generated.model.User">
+    update user
     set user_name = #{userName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR}
