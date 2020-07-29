@@ -1,8 +1,8 @@
 package com.example.mybatisdemo.controller;
 
 import com.example.mybatisdemo.generated.model.User;
+import com.example.mybatisdemo.model.SimplePageInfo;
 import com.example.mybatisdemo.service.UserService;
-import com.gitee.sunchenbin.mybatis.actable.command.PageResultCommand;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +26,9 @@ public class UserController {
 
     @GetMapping("/list/{page}/{size}")
     @ApiOperation("分页查看test")
-    public PageResultCommand<User> page(@PathVariable("page") int page, @PathVariable("size") int size) {
+    public SimplePageInfo<User> page(@PathVariable("page") int page, @PathVariable("size") int size) {
         try {
-            return userService.page(page, size);
+            return new SimplePageInfo<>(userService.page(page, size));
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
             return null;

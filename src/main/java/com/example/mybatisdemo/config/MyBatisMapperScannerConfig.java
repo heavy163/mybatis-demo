@@ -12,7 +12,8 @@ public class MyBatisMapperScannerConfig {
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer() throws Exception{
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-        mapperScannerConfigurer.setBasePackage("com.example.mybatisdemo.dao.*;com.gitee.sunchenbin.mybatis.actable.dao.*");
+        //为了配置ACTable的组件扫描
+        mapperScannerConfigurer.setBasePackage("com.example.mybatisdemo.generated.mapper.*;com.gitee.sunchenbin.mybatis.actable.dao.*");
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         return mapperScannerConfigurer;
     }
