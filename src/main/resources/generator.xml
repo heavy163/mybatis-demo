@@ -19,7 +19,7 @@
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
         <commentGenerator type="com.example.mybatisdemo.CommentGenerator">
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-            <property name="suppressAllComments" value="true"/>
+            <property name="suppressAllComments" value="false"/>
             <property name="suppressDate" value="true"/>
             <property name="addRemarkComments" value="true"/>
         </commentGenerator>
@@ -34,9 +34,9 @@
 
         <javaModelGenerator targetPackage="com.example.mybatisdemo.generated.model" targetProject="src/main/java"/>
 
-        <sqlMapGenerator targetPackage="mapper" targetProject="/Users/heavy/workspace/webwork/spring/mybatis-demo/src/main/resources"/>
+        <sqlMapGenerator targetPackage="com.example.mybatisdemo.generated.mapper" targetProject="/Users/heavy/workspace/webwork/spring/mybatis-demo/src/main/resources"/>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.mybatisdemo.generated.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.mybatisdemo.generated.mapper"
                              targetProject="/Users/heavy/workspace/webwork/spring/mybatis-demo/src/main/java"/>
         <!--生成全部表tableName设为%-->
         <table tableName="%">

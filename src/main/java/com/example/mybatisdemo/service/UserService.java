@@ -1,8 +1,17 @@
 package com.example.mybatisdemo.service;
 
-import org.springframework.stereotype.Service;
+import com.example.mybatisdemo.generated.model.User;
+import com.gitee.sunchenbin.mybatis.actable.command.PageResultCommand;
 
-@Service
+import java.util.List;
+
 public interface UserService {
 
+    User findById(long id);
+    User insert(User User);
+    boolean update(User User);
+    boolean deleteById(long id);
+    List<User> listAll();
+    PageResultCommand<User> page(int pageNum, int pageSize) throws NoSuchFieldException;
+    
 }

@@ -2,11 +2,9 @@ package com.example.mybatisdemo.service;
 
 import com.example.mybatisdemo.model.Test;
 import com.gitee.sunchenbin.mybatis.actable.command.PageResultCommand;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface TestService {
 
     Test findById(int id);
